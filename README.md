@@ -34,6 +34,18 @@ Creative apps (Krita, GIMP, Ardour, Audacity, Kdenlive, …) launch like **nativ
 
 This repo **does not** unlock bootloaders or ship device kernels.
 
+### Android tablets (important)
+
+**Running Ubuntu Studio directly on an Android tablet is not natively supported.** The official Studio ISO is **amd64** desktop Linux; typical pads stay on **Android / ARM64**.
+
+| If you want… | Use |
+|--------------|-----|
+| Full Studio apps + tablet UX | AMD64 PC/laptop + this layer (or remote into it from the pad) |
+| Replace Android entirely | **Ubuntu Touch** or **postmarketOS** *only on supported devices*, then optionally `install-arm.sh` |
+| Linux *without* wiping Android | **Andronix** (XFCE/LXQt on Termux) or **Termux** CLI / proot |
+
+Full write-up: **[docs/ANDROID-ALTERNATIVES.md](docs/ANDROID-ALTERNATIVES.md)** · bridge cheat sheet: `./scripts/android-linux-bridge.sh --print-all`
+
 ---
 
 ## Quick start
@@ -88,6 +100,7 @@ xdg-open apps/home-grid.html
 | Doc | Topic |
 |-----|--------|
 | [docs/INSTALL.md](docs/INSTALL.md) | Install options |
+| [docs/ANDROID-ALTERNATIVES.md](docs/ANDROID-ALTERNATIVES.md) | **Why Studio ≠ Android pad** — Ubuntu Touch, pmOS, Andronix, Termux |
 | [docs/XIAOXIN-LAPTOP.md](docs/XIAOXIN-LAPTOP.md) | Xiaoxin Pro laptop: USB, BIOS, **dual-boot Windows** |
 | [docs/XIAOXIN.md](docs/XIAOXIN.md) | Laptop vs Pad overview |
 | [docs/ARM-PORT.md](docs/ARM-PORT.md) | Get ARM Linux booting first |

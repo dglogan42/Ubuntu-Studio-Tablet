@@ -55,9 +55,13 @@ Then: **[ARM.md](ARM.md)** · **[PLASMA-MOBILE.md](PLASMA-MOBILE.md)** · **[WAY
 Other practical approaches:
 
 1. **postmarketOS** if your exact model is in the [device list](https://wiki.postmarketos.org/wiki/Devices) — pick Plasma Mobile UI, then `install-arm.sh`.
-2. **Keep Android** + remote into an AMD64 Studio machine (Sunshine / RDP / KDE Connect).
-3. **Waydroid** on the Linux ARM base for WeChat etc., Linux apps for creation.
-4. **External Studio host**: tablet as thin client for heavy DAW/video.
+2. **Ubuntu Touch** on [supported](https://ubuntu-touch.io/) devices only (replaces Android; not Ubuntu Studio desktop).
+3. **Keep Android** + remote into an AMD64 Studio machine (Sunshine / RDP / KDE Connect).
+4. **Andronix** or **Termux** — Linux *inside* Android (no wipe); fine for CLI/GUI sandbox, not a native Studio session.
+5. **Waydroid** on the Linux ARM base for WeChat etc., Linux apps for creation.
+6. **External Studio host**: tablet as thin client for heavy DAW/video.
+
+Details and comparison table: **[ANDROID-ALTERNATIVES.md](ANDROID-ALTERNATIVES.md)**.
 
 The **UX layer** (`configs/`, `apps/`, `scripts/ust-launch`) is architecture-independent.
 

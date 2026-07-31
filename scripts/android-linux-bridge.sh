@@ -9,9 +9,12 @@ termux() {
   cat <<'EOF'
 === Path C1 — Termux + proot (Android stays, no bootloader unlock) ===
 
-On the tablet (F-Droid or Play):
+Termux is a powerful Android terminal that runs a Linux CLI and packages
+directly on the tablet (prefer F-Droid builds).
+
+On the tablet:
   1. Install Termux (prefer F-Droid build)
-  2. Install Termux:X11 if you want a GUI
+  2. Install Termux:X11 if you want a nested GUI
 
 In Termux:
   pkg update && pkg upgrade
@@ -34,6 +37,44 @@ What you cannot do:
   - low-latency DAW with hardware RT guarantees
 
 Studio Tablet repo: use only individual tools or remote workflow.
+EOF
+}
+
+andronix() {
+  cat <<'EOF'
+=== Path C1b — Andronix (Linux desktop envs on top of Android) ===
+
+Andronix installs full Linux desktop environments (XFCE, LXQt, …) on top
+of your existing Android system, usually with Termux + proot-style rootfs.
+
+  1. Install Andronix from the Play Store / their site
+  2. Pick a distro + DE (e.g. Ubuntu + XFCE)
+  3. Follow their Termux commands; start VNC/Termux:X11 as directed
+
+Good for: trying a Linux desktop without wiping Android.
+Weak for: real-time audio, GPU-heavy video, "native tablet OS" feel.
+Not a substitute for amd64 Ubuntu Studio or install-tablet-mode.sh.
+
+See also: docs/ANDROID-ALTERNATIVES.md
+EOF
+}
+
+mobile_os() {
+  cat <<'EOF'
+=== Path B — Replace Android (supported hardware only) ===
+
+Ubuntu Touch:
+  Mobile-friendly Ubuntu that replaces Android on supported phones/tablets.
+  https://ubuntu-touch.io/  — check device support first.
+  Not the same as Ubuntu Studio desktop.
+
+postmarketOS:
+  Alpine-based, touch-friendly mobile Linux.
+  https://wiki.postmarketos.org/wiki/Devices
+  Prefer Plasma Mobile UI when available, then:
+    sudo ./scripts/install-arm.sh --ui plasma-mobile --with-creative
+
+Neither path is "flash the Ubuntu Studio amd64 ISO on the pad."
 EOF
 }
 
@@ -78,7 +119,16 @@ EOF
 }
 
 all() {
+  cat <<'EOF'
+NOTE: Full Ubuntu Studio desktop is NOT natively supported on Android tablets.
+See docs/ANDROID-ALTERNATIVES.md for the full comparison.
+
+EOF
+  mobile_os
+  echo ""
   termux
+  echo ""
+  andronix
   echo ""
   remote
   echo ""
@@ -87,6 +137,7 @@ all() {
 
 === Next tools in this repo ===
   ./scripts/check-device-support.sh --adb
+  docs/ANDROID-ALTERNATIVES.md
   docs/ARM-PORT.md
   docs/XIAOXIN.md
 
@@ -96,18 +147,20 @@ EOF
 }
 
 case "$MODE" in
-  --print-termux) termux ;;
-  --print-remote) remote ;;
-  --print-chroot) chroot_root ;;
+  --print-termux|--termux) termux ;;
+  --print-andronix|--andronix) andronix ;;
+  --print-mobile-os|--mobile-os) mobile_os ;;
+  --print-remote|--remote) remote ;;
+  --print-chroot|--chroot) chroot_root ;;
   --print-all|-h|--help)
     if [[ "$MODE" == "-h" || "$MODE" == "--help" ]]; then
-      echo "Usage: $0 --print-all|--print-termux|--print-remote|--print-chroot"
+      echo "Usage: $0 --print-all|--print-termux|--print-andronix|--print-mobile-os|--print-remote|--print-chroot"
       exit 0
     fi
     all
     ;;
   *)
-    echo "Usage: $0 --print-all|--print-termux|--print-remote|--print-chroot" >&2
+    echo "Usage: $0 --print-all|--print-termux|--print-andronix|--print-mobile-os|--print-remote|--print-chroot" >&2
     exit 1
     ;;
 esac

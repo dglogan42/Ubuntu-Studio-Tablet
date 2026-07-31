@@ -6,6 +6,11 @@ This repo **does not**:
 - Ship device kernels / device trees  
 - Flash firmware  
 - Guarantee postmarketOS on every Xiaoxin model  
+- Run **Ubuntu Studio’s amd64 ISO** on a typical Android tablet  
+
+**Running a full desktop OS like Ubuntu Studio directly on an Android tablet is not natively supported.**  
+If you must stay on Android, use Termux / Andronix / remote Studio — see **[ANDROID-ALTERNATIVES.md](ANDROID-ALTERNATIVES.md)**.  
+If you can replace Android on a *supported* device, **postmarketOS** or **Ubuntu Touch** come first; this repo is step 2+.
 
 It **does** turn an already-booting **Plasma 6 ARM system** into a Studio Tablet experience (`install-arm.sh`).
 
