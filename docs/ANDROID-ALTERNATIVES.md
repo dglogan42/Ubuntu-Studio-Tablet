@@ -25,13 +25,65 @@ Use one of the paths below depending on how deep you want to go.
 
 These install a real Linux userspace as the device OS. You need **device support** (kernel, display, touch, modem optional). This repo never flashes firmware.
 
+> **“Sideload via kernel”** here means: unlock bootloader (device-specific), flash a **Linux kernel + initramfs + rootfs** (fastboot / recovery / `pmbootstrap flasher`), not “copy Ubuntu Studio.iso onto internal storage.”  
+> Wrong codename or stock firmware = soft-brick risk. Always keep a stock ROM package.
+
+### Download & install links (official)
+
+| Project | What you download | Official links |
+|---------|-------------------|----------------|
+| **Ubuntu Studio (PC/laptop)** | Live **ISO** (amd64) | [26.04 Resolute release](https://cdimage.ubuntu.com/ubuntustudio/releases/resolute/release/) · [all Studio images](https://cdimage.ubuntu.com/ubuntustudio/) |
+| **Ubuntu Touch** | **UBports Installer** (pulls recovery + system + device kernel for you) | [Installer hub](https://devices.ubuntu-touch.io/installer/) · [GitHub releases](https://github.com/ubports/ubports-installer/releases/latest) · [Snap](https://snapcraft.io/ubports-installer) · [Devices](https://devices.ubuntu-touch.io/) |
+| **postmarketOS** | Prebuilt **device images** *or* build/flash with **pmbootstrap** | [Download guide](https://postmarketos.org/download/) · [Image mirror](https://images.postmarketos.org/) · [Devices wiki](https://wiki.postmarketos.org/wiki/Devices) · [pmbootstrap](https://wiki.postmarketos.org/wiki/Pmbootstrap) · [Installation](https://wiki.postmarketos.org/wiki/Installation_guide) |
+| **Ubuntu arm64 (generic)** | Server/cloud **ISO / img** (only if hardware is mainline/UEFI) | [Ubuntu arm64 downloads](https://ubuntu.com/download/server/arm) · [cdimage arm64](https://cdimage.ubuntu.com/releases/) |
+| **Mobian** (Debian mobile) | Device images (PinePhone / Librem / limited set) | [mobian.org downloads](https://images.mobian.org/) · [wiki](https://wiki.mobian.org/) |
+
+Installer packages for **Ubuntu Touch** (PC host, then flash the phone/tablet over USB):
+
+| Host OS | Package link |
+|---------|----------------|
+| **Linux (AppImage)** | [devices.ubuntu-touch.io/installer?package=appimage](https://devices.ubuntu-touch.io/installer?package=appimage) |
+| **Debian/Ubuntu (.deb)** | [installer?package=deb](https://devices.ubuntu-touch.io/installer?package=deb) |
+| **Snap** | `snap install ubports-installer` → [snapcraft.io/ubports-installer](https://snapcraft.io/ubports-installer) |
+| **macOS (.dmg)** | [installer?package=dmg](https://devices.ubuntu-touch.io/installer?package=dmg) |
+| **Windows (.exe)** | [installer?package=exe](https://devices.ubuntu-touch.io/installer?package=exe) |
+| **All releases** | [github.com/ubports/ubports-installer/releases/latest](https://github.com/ubports/ubports-installer/releases/latest) |
+
+**postmarketOS** image channels (pick **your device folder** under the release, then UI e.g. `plasma-mobile`):
+
+| Channel | URL |
+|---------|-----|
+| **Latest stable-ish / current** | [images.postmarketos.org/v26.06/](https://images.postmarketos.org/v26.06/) |
+| Previous | [images.postmarketos.org/v25.12/](https://images.postmarketos.org/v25.12/) |
+| Rolling **edge** | [images.postmarketos.org/edge/](https://images.postmarketos.org/edge/) |
+| How to flash | [postmarketos.org/download/](https://postmarketos.org/download/) |
+
+If no prebuilt image exists for your codename, **build + flash kernel/rootfs** on a Linux PC:
+
+```bash
+pipx install pmbootstrap   # or distro package
+pmbootstrap init           # vendor + device + UI: plasma-mobile
+pmbootstrap install
+# Device wiki then typically:
+#   pmbootstrap flasher flash_rootfs
+#   pmbootstrap flasher flash_kernel
+```
+
+Repo helper (prints matrix hints only — does **not** flash):
+
+```bash
+./scripts/pmbootstrap-hints.sh <codename>   # e.g. lenovo-j716f
+./scripts/check-device-support.sh --adb
+```
+
 ### Ubuntu Touch
 
 A mobile-friendly Ubuntu-derived system for **phones and tablets** that **replaces Android entirely** on **supported** hardware.
 
-- Project / devices: [ubuntu-touch.io](https://ubuntu-touch.io/) / UBports  
+- Project: [ubuntu-touch.io](https://ubuntu-touch.io/) · docs: [docs.ubports.com install guide](https://docs.ubports.com/en/latest/userguide/install.html)  
 - **Not** the same as Ubuntu Studio desktop  
-- Only useful here if your exact tablet model is supported and you can boot Touch first  
+- Install path: unlock/bootloader prep per [device page](https://devices.ubuntu-touch.io/) → run **UBports Installer** on a PC → installer downloads and flashes **recovery, kernel, and system** images over USB  
+- Manual/advanced: some ports publish partition images (boot/system) on their GitLab CI; prefer the installer unless the device page says otherwise  
 
 After a working session, creative apps are limited compared with amd64 Studio; treat UST scripts as optional experiments, not a guarantee.
 
@@ -39,9 +91,10 @@ After a working session, creative apps are limited compared with amd64 Studio; t
 
 A lightweight, touch-oriented system based on **Alpine Linux**, designed for mobile devices.
 
-- Device wiki: [wiki.postmarketos.org/wiki/Devices](https://wiki.postmarketos.org/wiki/Devices)  
-- Prefer a **Plasma Mobile** UI image when available  
-- Once Plasma 6 boots: run this repo’s ARM installer  
+1. Confirm your model: [Devices wiki](https://wiki.postmarketos.org/wiki/Devices)  
+2. Prefer a prebuilt image under [images.postmarketos.org](https://images.postmarketos.org/) with **plasma-mobile** (or build via pmbootstrap)  
+3. Flash per device wiki (**kernel** + rootfs via `fastboot` / SD / `pmbootstrap flasher`)  
+4. Once Plasma boots, layer this repo:
 
 ```bash
 sudo ./scripts/install-arm.sh --ui plasma-mobile --with-creative --with-waydroid
@@ -51,7 +104,13 @@ See **[ARM-PORT.md](ARM-PORT.md)** and **[PLASMA-MOBILE.md](PLASMA-MOBILE.md)**.
 
 ### Other ARM bases
 
-Mobian, Ubuntu arm64 images, or vendor mainline ports — same rule: **working Linux first**, then UST layer (`install-arm.sh` / `install-layer.sh`).
+| Base | Download / notes |
+|------|------------------|
+| **Mobian** | [images.mobian.org](https://images.mobian.org/) — Debian mobile; limited device list |
+| **Ubuntu Server arm64** | [ubuntu.com/download/server/arm](https://ubuntu.com/download/server/arm) — only if board/tablet is mainline UEFI; **not** for locked Xiaoxin pads |
+| **Droidian** | [droidian.org](https://droidian.org/) — Halium-based; device-specific images |
+
+Same rule: **working Linux first**, then UST layer (`install-arm.sh` / `install-layer.sh`).
 
 ---
 

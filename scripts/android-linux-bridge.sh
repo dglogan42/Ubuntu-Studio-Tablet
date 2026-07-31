@@ -62,19 +62,36 @@ EOF
 mobile_os() {
   cat <<'EOF'
 === Path B — Replace Android (supported hardware only) ===
+Sideload = unlock bootloader + flash Linux kernel/rootfs (not Studio.iso on userdata).
 
-Ubuntu Touch:
-  Mobile-friendly Ubuntu that replaces Android on supported phones/tablets.
-  https://ubuntu-touch.io/  — check device support first.
+Ubuntu Touch (UBports Installer pulls recovery + kernel + system over USB):
+  Devices:     https://devices.ubuntu-touch.io/
+  Installer:   https://devices.ubuntu-touch.io/installer/
+  Releases:    https://github.com/ubports/ubports-installer/releases/latest
+  AppImage:    https://devices.ubuntu-touch.io/installer?package=appimage
+  deb:         https://devices.ubuntu-touch.io/installer?package=deb
+  Windows:     https://devices.ubuntu-touch.io/installer?package=exe
+  macOS:       https://devices.ubuntu-touch.io/installer?package=dmg
+  Snap:        snap install ubports-installer
+  Docs:        https://docs.ubports.com/en/latest/userguide/install.html
   Not the same as Ubuntu Studio desktop.
 
-postmarketOS:
-  Alpine-based, touch-friendly mobile Linux.
-  https://wiki.postmarketos.org/wiki/Devices
+postmarketOS (prebuilt images or pmbootstrap → flash_kernel + flash_rootfs):
+  Download:    https://postmarketos.org/download/
+  Images:      https://images.postmarketos.org/
+  v26.06:      https://images.postmarketos.org/v26.06/
+  edge:        https://images.postmarketos.org/edge/
+  Devices:     https://wiki.postmarketos.org/wiki/Devices
+  Install:     https://wiki.postmarketos.org/wiki/Installation_guide
+  pmbootstrap: https://wiki.postmarketos.org/wiki/Pmbootstrap
   Prefer Plasma Mobile UI when available, then:
     sudo ./scripts/install-arm.sh --ui plasma-mobile --with-creative
 
+Ubuntu Studio (PC/laptop amd64 ISO only — not for ARM Android pads):
+  https://cdimage.ubuntu.com/ubuntustudio/releases/resolute/release/
+
 Neither path is "flash the Ubuntu Studio amd64 ISO on the pad."
+See docs/ANDROID-ALTERNATIVES.md
 EOF
 }
 

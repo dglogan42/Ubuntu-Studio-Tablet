@@ -68,6 +68,33 @@ Match against `data/device-matrix.tsv`.
 
 **Best when:** your codename is listed and status is not pure fantasy.
 
+### A0. Official downloads (images + kernel flash)
+
+| Resource | URL |
+|----------|-----|
+| Download how-to | https://postmarketos.org/download/ |
+| Prebuilt images | https://images.postmarketos.org/ |
+| Current branch example | https://images.postmarketos.org/v26.06/ |
+| Edge (rolling) | https://images.postmarketos.org/edge/ |
+| Devices list | https://wiki.postmarketos.org/wiki/Devices |
+| Installation guide | https://wiki.postmarketos.org/wiki/Installation_guide |
+| pmbootstrap | https://wiki.postmarketos.org/wiki/Pmbootstrap |
+
+Prebuilt trees are usually:  
+`https://images.postmarketos.org/<channel>/<vendor>/<device>/…`  
+Pick a UI tarball that includes **plasma-mobile** when available, then flash **rootfs + kernel** as the device wiki describes (`fastboot flash boot …`, `pmbootstrap flasher flash_kernel`, SD card, etc.).
+
+**Ubuntu Touch** (if the pad is on the UBports list instead of pmOS):
+
+| Resource | URL |
+|----------|-----|
+| Device support | https://devices.ubuntu-touch.io/ |
+| Installer (downloads recovery/kernel/system) | https://devices.ubuntu-touch.io/installer/ |
+| Installer releases | https://github.com/ubports/ubports-installer/releases/latest |
+| Install docs | https://docs.ubports.com/en/latest/userguide/install.html |
+
+Full comparison + Studio ISO links: **[ANDROID-ALTERNATIVES.md](ANDROID-ALTERNATIVES.md)**.
+
 ### A1. Read the device wiki
 
 ```

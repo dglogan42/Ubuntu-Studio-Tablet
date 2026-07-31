@@ -44,7 +44,8 @@ This repo **does not** unlock bootloaders or ship device kernels.
 | Replace Android entirely | **Ubuntu Touch** or **postmarketOS** *only on supported devices*, then optionally `install-arm.sh` |
 | Linux *without* wiping Android | **Andronix** (XFCE/LXQt on Termux) or **Termux** CLI / proot |
 
-Full write-up: **[docs/ANDROID-ALTERNATIVES.md](docs/ANDROID-ALTERNATIVES.md)** · bridge cheat sheet: `./scripts/android-linux-bridge.sh --print-all`
+Full write-up + **ISO / image / installer download links**: **[docs/ANDROID-ALTERNATIVES.md](docs/ANDROID-ALTERNATIVES.md)**  
+Bridge cheat sheet (includes flash URLs): `./scripts/android-linux-bridge.sh --print-mobile-os`
 
 ---
 
