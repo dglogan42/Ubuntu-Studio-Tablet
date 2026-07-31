@@ -1,0 +1,18 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Shotcut
+Name[zh_CN]=Shotcut 视频
+GenericName=Tablet App
+GenericName[zh_CN]=平板应用
+Comment=Ubuntu Studio Tablet fullscreen app
+Comment[zh_CN]=Ubuntu Studio 平板全屏应用
+Exec=/usr/lib/ubuntu-studio-tablet/bin/ust-launch --class shotcut -- shotcut
+Icon=org.shotcut.Shotcut
+Terminal=false
+StartupNotify=true
+StartupWMClass=shotcut
+Categories=UbuntuStudioTablet;AudioVideo;Video;
+Keywords=studio;tablet;touch;Shotcut;
+X-Ubuntu-Studio-Tablet=true
+X-KDE-FormFactor=tablet;handset;desktop;

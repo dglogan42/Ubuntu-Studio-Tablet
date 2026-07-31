@@ -1,0 +1,18 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=RawTherapee
+Name[zh_CN]=RawTherapee
+GenericName=Tablet App
+GenericName[zh_CN]=平板应用
+Comment=Ubuntu Studio Tablet fullscreen app
+Comment[zh_CN]=Ubuntu Studio 平板全屏应用
+Exec=/usr/lib/ubuntu-studio-tablet/bin/ust-launch --class rawtherapee -- rawtherapee
+Icon=rawtherapee
+Terminal=false
+StartupNotify=true
+StartupWMClass=rawtherapee
+Categories=UbuntuStudioTablet;Graphics;Photography;
+Keywords=studio;tablet;touch;RawTherapee;
+X-Ubuntu-Studio-Tablet=true
+X-KDE-FormFactor=tablet;handset;desktop;

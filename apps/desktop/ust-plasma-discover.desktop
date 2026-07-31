@@ -1,0 +1,18 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Discover
+Name[zh_CN]=软件商店
+GenericName=Tablet App
+GenericName[zh_CN]=平板应用
+Comment=Ubuntu Studio Tablet fullscreen app
+Comment[zh_CN]=Ubuntu Studio 平板全屏应用
+Exec=/usr/lib/ubuntu-studio-tablet/bin/ust-launch --class plasma-discover -- plasma-discover
+Icon=plasmadiscover
+Terminal=false
+StartupNotify=true
+StartupWMClass=plasma-discover
+Categories=UbuntuStudioTablet;PackageManager;
+Keywords=studio;tablet;touch;Discover;
+X-Ubuntu-Studio-Tablet=true
+X-KDE-FormFactor=tablet;handset;desktop;

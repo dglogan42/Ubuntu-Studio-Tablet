@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+# ust-launch — launch an app in native tablet (fullscreen app) style
+# Usage: ust-launch [--class WM_CLASS] [--title TITLE] -- command [args...]
+set -euo pipefail
+
+WM_CLASS=""
+TITLE=""
+WAIT_MS=800
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --class) WM_CLASS="${2:-}"; shift 2 ;;
+    --title) TITLE="${2:-}"; shift 2 ;;
+    --wait)  WAIT_MS="${2:-800}"; shift 2 ;;
+    --) shift; break ;;
+    -*) echo "Unknown option: $1" >&2; exit 2 ;;
+    *) break ;;
+  esac
+done
+
+if [[ $# -lt 1 ]]; then
+  echo "Usage: ust-launch [--class CLASS] [--title TITLE] -- command [args...]" >&2
+  exit 2
+fi
+
+# Prefer Wayland; force app to take the stage
+export GDK_BACKEND="${GDK_BACKEND:-wayland,x11}"
+export QT_QPA_PLATFORM="${QT_QPA_PLATFORM:-wayland;xcb}"
+export QT_AUTO_SCREEN_SCALE_FACTOR="${QT_AUTO_SCREEN_SCALE_FACTOR:-1}"
+export QT_ENABLE_HIGHDPI_SCALING="${QT_ENABLE_HIGHDPI_SCALING:-1}"
+# Touch-friendly Qt
+export QT_QUICK_CONTROLS_MOBILE="${QT_QUICK_CONTROLS_MOBILE:-1}"
+export QT_QUICK_CONTROLS_STYLE="${QT_QUICK_CONTROLS_STYLE:-Plasma}"
+
+# Virtual keyboard
+export QT_IM_MODULE="${QT_IM_MODULE:-fcitx5}"
+export GTK_IM_MODULE="${GTK_IM_MODULE:-fcitx5}"
+export XMODIFIERS="${XMODIFIERS:-@im=fcitx5}"
+export SDL_IM_MODULE="${SDL_IM_MODULE:-fcitx}"
+
+CMD=("$@")
+
+# Start app in background
+"${CMD[@]}" &
+APP_PID=$!
+
+# Best-effort maximize / fullscreen after map (X11 helpers; Wayland via KWin rules)
+(
+  sleep "$(awk "BEGIN{print $WAIT_MS/1000}")"
+  if command -v wmctrl >/dev/null 2>&1; then
+    if [[ -n "$TITLE" ]]; then
+      wmctrl -r "$TITLE" -b add,maximized_vert,maximized_horz 2>/dev/null || true
+      wmctrl -r "$TITLE" -b add,fullscreen 2>/dev/null || true
+    elif [[ -n "$WM_CLASS" ]]; then
+      # Match by class substring in window list
+      while read -r winid rest; do
+        wmctrl -i -r "$winid" -b add,maximized_vert,maximized_horz 2>/dev/null || true
+      done < <(wmctrl -lx 2>/dev/null | awk -v c="$WM_CLASS" 'tolower($0) ~ tolower(c) {print $1}')
+    fi
+  fi
+  if command -v xdotool >/dev/null 2>&1 && [[ -n "$WM_CLASS" ]]; then
+    wid=$(xdotool search --class "$WM_CLASS" 2>/dev/null | head -1 || true)
+    if [[ -n "${wid:-}" ]]; then
+      xdotool windowactivate "$wid" 2>/dev/null || true
+      xdotool key --window "$wid" super+Up 2>/dev/null || true
+    fi
+  fi
+) &
+
+wait "$APP_PID"

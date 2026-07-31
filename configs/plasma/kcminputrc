@@ -1,0 +1,10 @@
+[Mouse]
+cursorSize=36
+cursorTheme=breeze_cursors
+
+[Keyboard]
+NumLock=2
+
+[Libinput][Virtual core pointer]
+NaturalScroll=true
+PointerAccelerationProfile=1

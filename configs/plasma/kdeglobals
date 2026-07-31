@@ -1,0 +1,34 @@
+[General]
+ColorScheme=BreezeDark
+Name=Ubuntu Studio Tablet
+fixed=Noto Sans Mono CJK SC,10,-1,5,50,0,0,0,0,0
+font=Noto Sans CJK SC,11,-1,5,50,0,0,0,0,0
+menuFont=Noto Sans CJK SC,11,-1,5,50,0,0,0,0,0
+smallestReadableFont=Noto Sans CJK SC,9,-1,5,50,0,0,0,0,0
+toolBarFont=Noto Sans CJK SC,10,-1,5,50,0,0,0,0,0
+XftAntialias=true
+XftHintStyle=hintslight
+XftSubPixel=rgb
+
+[KDE]
+AnimationDurationFactor=0.8
+LookAndFeelPackage=org.kde.breezedark.desktop
+SingleClick=true
+ScrollbarLeftClickNavigatesByPage=true
+widgetStyle=Breeze
+
+[Icons]
+Theme=breeze-dark
+
+[Toolbar style]
+ToolButtonStyle=TextUnderIcon
+ToolButtonStyleOtherToolbars=TextUnderIcon
+
+[WM]
+activeBackground=32,32,36
+activeBlend=32,32,36
+activeFont=Noto Sans CJK SC,11,-1,5,50,0,0,0,0,0
+activeForeground=252,252,252
+inactiveBackground=42,42,46
+inactiveBlend=42,42,46
+inactiveForeground=161,161,170

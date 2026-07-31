@@ -1,0 +1,36 @@
+# Creative apps we wrap as tablet-native launchers
+# (already on Ubuntu Studio; listed for documentation)
+
+# Graphics
+krita
+gimp
+inkscape
+darktable
+rawtherapee
+blender
+
+# Audio
+ardour
+audacity
+qtractor
+carla
+hydrogen
+lmms
+mixxx
+qjackctl
+qpwgraph
+patchage
+
+# Video
+kdenlive
+obs-studio
+shotcut
+openshot
+pitivi
+
+# Photography / utility
+digikam
+gwenview
+scribus
+libreoffice-writer
+firefox

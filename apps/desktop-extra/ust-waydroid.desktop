@@ -1,0 +1,17 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Android Apps
+Name[zh_CN]=安卓应用
+GenericName=Waydroid
+GenericName[zh_CN]=Waydroid 安卓容器
+Comment=Run Android apps in a fullscreen container
+Comment[zh_CN]=全屏安卓应用容器（微信、网易云等）
+Exec=/usr/lib/ubuntu-studio-tablet/bin/ust-waydroid ui
+Icon=android-sdk
+Terminal=false
+StartupNotify=true
+Categories=UbuntuStudioTablet;Utility;System;
+Keywords=android;waydroid;apk;微信;
+X-Ubuntu-Studio-Tablet=true
+X-KDE-FormFactor=tablet;handset;desktop;

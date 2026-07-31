@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Waydroid Status
+Name[zh_CN]=安卓容器状态
+Comment=Show Waydroid status in terminal
+Exec=qmlkonsole -e waydroid status
+TryExec=waydroid
+Icon=utilities-system-monitor
+Terminal=false
+Categories=UbuntuStudioTablet;System;
+X-Ubuntu-Studio-Tablet=true

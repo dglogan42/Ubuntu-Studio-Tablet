@@ -1,0 +1,18 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Hydrogen
+Name[zh_CN]=Hydrogen 鼓机
+GenericName=Tablet App
+GenericName[zh_CN]=平板应用
+Comment=Ubuntu Studio Tablet fullscreen app
+Comment[zh_CN]=Ubuntu Studio 平板全屏应用
+Exec=/usr/lib/ubuntu-studio-tablet/bin/ust-launch --class hydrogen -- hydrogen
+Icon=hydrogen
+Terminal=false
+StartupNotify=true
+StartupWMClass=hydrogen
+Categories=UbuntuStudioTablet;AudioVideo;Audio;
+Keywords=studio;tablet;touch;Hydrogen;
+X-Ubuntu-Studio-Tablet=true
+X-KDE-FormFactor=tablet;handset;desktop;

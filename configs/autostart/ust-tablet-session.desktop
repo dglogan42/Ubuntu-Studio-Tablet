@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Ubuntu Studio Tablet Session Init
+Name[zh_CN]=Ubuntu Studio 平板会话初始化
+Exec=/usr/lib/ubuntu-studio-tablet/bin/ust-session-init
+X-KDE-autostart-phase=1
+X-GNOME-Autostart-enabled=true
+NoDisplay=true

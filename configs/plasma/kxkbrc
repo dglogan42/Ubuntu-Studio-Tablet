@@ -1,0 +1,6 @@
+[Layout]
+DisplayNames=
+LayoutList=cn,us
+Use=true
+VariantList=altgr-pinyin,
+Options=grp:alt_shift_toggle

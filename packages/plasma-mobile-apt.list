@@ -1,0 +1,31 @@
+# Plasma Mobile stack — Ubuntu / Debian (arm64 or amd64)
+# Names track Ubuntu universe (Plasma 6 era); missing packages are skipped.
+
+plasma-mobile
+plasma-nano
+plasma-settings
+plasma-phonebook
+plasma-dialer
+spacebar
+angelfish
+kalk
+kclock
+kweather
+qmlkonsole
+kwin-wayland
+plasma-nm
+plasma-pa
+plasma-workspace-wayland
+maliit-keyboard
+maliit-framework
+iio-sensor-proxy
+powerdevil
+kdeconnect
+
+# Optional phone/tablet apps
+elisa
+okular
+gwenview
+discover
+# older name used on some releases:
+# plasma-phone-components

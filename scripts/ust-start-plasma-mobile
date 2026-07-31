@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+# Session entry: Plasma Mobile + Studio Tablet environment
+set -euo pipefail
+
+export XDG_CURRENT_DESKTOP="${XDG_CURRENT_DESKTOP:-KDE}"
+export XDG_SESSION_TYPE=wayland
+export GTK_IM_MODULE="${GTK_IM_MODULE:-fcitx5}"
+export QT_IM_MODULE="${QT_IM_MODULE:-fcitx5}"
+export XMODIFIERS="${XMODIFIERS:-@im=fcitx5}"
+export QT_QUICK_CONTROLS_MOBILE=1
+export PLASMA_PLATFORM="${PLASMA_PLATFORM:-phone:handheld}"
+export KDE_FULL_SESSION=true
+
+# Seed configs for first login
+if [[ -n "${HOME:-}" ]]; then
+  mkdir -p "$HOME/.config"
+  for f in kwinrc kwinrulesrc kdeglobals kxkbrc; do
+    if [[ ! -f "$HOME/.config/$f" && -f "/etc/skel/.config/$f" ]]; then
+      cp "/etc/skel/.config/$f" "$HOME/.config/$f"
+    fi
+  done
+  # plasma-mobile specific
+  for f in /etc/skel/.config/*; do
+    [[ -f "$f" ]] || continue
+    base=$(basename "$f")
+    [[ -f "$HOME/.config/$base" ]] || cp "$f" "$HOME/.config/$base"
+  done
+fi
+
+# Prefer official Plasma Mobile starters (name varies by distro/version)
+if [[ -x /usr/bin/startplasmamobile ]]; then
+  exec /usr/bin/startplasmamobile
+fi
+if [[ -x /usr/lib/libexec/plasma-mobile/startplasmamobile ]]; then
+  exec /usr/lib/libexec/plasma-mobile/startplasmamobile
+fi
+if [[ -x /usr/bin/plasma-mobile ]]; then
+  exec /usr/bin/plasma-mobile
+fi
+# Fallback: plasmashell mobile look via desktop session (less ideal)
+if [[ -x /usr/bin/startplasma-wayland ]]; then
+  export PLASMA_PLATFORM=phone:handheld
+  exec /usr/bin/startplasma-wayland
+fi
+
+echo "No Plasma Mobile session binary found." >&2
+echo "Install plasma-mobile / postmarketos-ui-plasma-mobile." >&2
+exit 1

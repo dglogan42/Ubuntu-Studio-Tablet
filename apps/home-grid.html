@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Ubuntu Studio Tablet · Home</title>
+  <style>
+    :root {
+      --bg: #0f0f14;
+      --card: #1c1c24;
+      --text: #f4f4f5;
+      --muted: #a1a1aa;
+      --accent: #2dd4bf;
+      --purple: #7c5cff;
+      --safe-b: env(safe-area-inset-bottom, 0px);
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; min-height: 100dvh;
+      font-family: "Noto Sans CJK SC", "Noto Sans", system-ui, sans-serif;
+      background:
+        radial-gradient(ellipse at 70% 20%, rgba(124,92,255,.25), transparent 50%),
+        radial-gradient(ellipse at 20% 80%, rgba(45,212,191,.18), transparent 45%),
+        var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      user-select: none;
+    }
+    header {
+      padding: 28px 24px 8px;
+      display: flex; justify-content: space-between; align-items: flex-end;
+    }
+    header h1 { margin: 0; font-size: 1.35rem; font-weight: 600; }
+    header .time { color: var(--muted); font-variant-numeric: tabular-nums; font-size: 1.1rem; }
+    .tabs {
+      display: flex; gap: 10px; padding: 12px 20px 8px; overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tab {
+      flex: 0 0 auto; padding: 10px 18px; border-radius: 999px;
+      background: rgba(255,255,255,.06); color: var(--muted);
+      border: 1px solid transparent; font-size: .95rem;
+    }
+    .tab.active {
+      color: var(--bg); background: linear-gradient(135deg, var(--accent), var(--purple));
+      font-weight: 600;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+      gap: 18px 12px;
+      padding: 16px 20px 120px;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .app {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      cursor: pointer; border: none; background: none; color: inherit;
+      padding: 8px 4px; border-radius: 16px;
+      transition: transform .12s ease, background .12s ease;
+    }
+    .app:active { transform: scale(.94); }
+    .app:focus-visible { outline: 2px solid var(--accent); }
+    .icon {
+      width: 68px; height: 68px; border-radius: 18px;
+      display: grid; place-items: center;
+      font-size: 1.6rem; font-weight: 700;
+      box-shadow: 0 8px 24px rgba(0,0,0,.35);
+      background: var(--card);
+    }
+    .app span.label {
+      font-size: .78rem; text-align: center; line-height: 1.25;
+      max-width: 88px; color: var(--text);
+    }
+    .app span.sub { font-size: .65rem; color: var(--muted); max-width: 88px; text-align: center; }
+    .dock {
+      position: fixed; left: 50%; transform: translateX(-50%);
+      bottom: calc(16px + var(--safe-b));
+      display: flex; gap: 14px; padding: 12px 18px;
+      background: rgba(28,28,36,.85); backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 28px; box-shadow: 0 12px 40px rgba(0,0,0,.45);
+    }
+    .dock button {
+      width: 52px; height: 52px; border-radius: 16px; border: none;
+      background: rgba(255,255,255,.08); color: var(--text); font-size: 1.2rem;
+    }
+    .dock button:active { background: rgba(45,212,191,.25); }
+    .toast {
+      position: fixed; top: 20px; left: 50%; transform: translateX(-50%) translateY(-120%);
+      background: #27272a; color: var(--text); padding: 12px 20px; border-radius: 12px;
+      transition: transform .25s ease; z-index: 50; font-size: .9rem;
+      border: 1px solid rgba(255,255,255,.1);
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+    footer.note {
+      text-align: center; color: var(--muted); font-size: .75rem;
+      padding: 0 16px 100px; max-width: 520px; margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="toast" id="toast"></div>
+  <header>
+    <div>
+      <h1>Studio Tablet</h1>
+      <div style="color:var(--muted);font-size:.85rem;margin-top:4px">原生应用风格 · Ubuntu Studio 26.04</div>
+    </div>
+    <div class="time" id="clock">--:--</div>
+  </header>
+
+  <nav class="tabs" id="tabs">
+    <button class="tab active" data-cat="all">全部</button>
+    <button class="tab" data-cat="graphics">图形</button>
+    <button class="tab" data-cat="audio">音频</button>
+    <button class="tab" data-cat="video">视频</button>
+    <button class="tab" data-cat="system">系统</button>
+  </nav>
+
+  <main class="grid" id="grid"></main>
+
+  <footer class="note">
+    预览主屏幕。安装后由 Plasma + <code>ust-*.desktop</code> 提供同等体验。
+    ARM 联想小新平板请阅读 <code>docs/XIAOXIN.md</code>。
+  </footer>
+
+  <nav class="dock" aria-label="导航">
+    <button type="button" title="主页" onclick="filter('all')">⌂</button>
+    <button type="button" title="最近" onclick="toast('多任务概览（KWin Overview）')">⧉</button>
+    <button type="button" title="键盘" onclick="toast('虚拟键盘 / fcitx5')">⌨</button>
+    <button type="button" title="设置" onclick="launch({id:'settings',zh:'系统设置'})">⚙</button>
+  </nav>
+
+  <script>
+    const APPS = [
+      { id: 'krita', zh: 'Krita 绘画', en: 'Krita', cat: 'graphics', color: '#6c5ce7', glyph: 'K' },
+      { id: 'gimp', zh: 'GIMP', en: 'GIMP', cat: 'graphics', color: '#5b8def', glyph: 'G' },
+      { id: 'inkscape', zh: 'Inkscape', en: 'Inkscape', cat: 'graphics', color: '#2d3436', glyph: 'I' },
+      { id: 'darktable', zh: 'Darktable', en: 'Darktable', cat: 'graphics', color: '#636e72', glyph: 'D' },
+      { id: 'blender', zh: 'Blender', en: 'Blender', cat: 'graphics', color: '#e17055', glyph: 'B' },
+      { id: 'ardour', zh: 'Ardour', en: 'Ardour', cat: 'audio', color: '#d63031', glyph: 'A' },
+      { id: 'audacity', zh: 'Audacity', en: 'Audacity', cat: 'audio', color: '#0984e3', glyph: 'Au' },
+      { id: 'carla', zh: 'Carla', en: 'Carla', cat: 'audio', color: '#00b894', glyph: 'C' },
+      { id: 'hydrogen', zh: 'Hydrogen', en: 'Hydrogen', cat: 'audio', color: '#fdcb6e', glyph: 'H' },
+      { id: 'lmms', zh: 'LMMS', en: 'LMMS', cat: 'audio', color: '#e84393', glyph: 'L' },
+      { id: 'mixxx', zh: 'Mixxx', en: 'Mixxx', cat: 'audio', color: '#00cec9', glyph: 'M' },
+      { id: 'kdenlive', zh: 'Kdenlive', en: 'Kdenlive', cat: 'video', color: '#6c5ce7', glyph: 'Kd' },
+      { id: 'obs', zh: 'OBS', en: 'OBS', cat: 'video', color: '#2d3436', glyph: 'O' },
+      { id: 'shotcut', zh: 'Shotcut', en: 'Shotcut', cat: 'video', color: '#0984e3', glyph: 'S' },
+      { id: 'files', zh: '文件', en: 'Files', cat: 'system', color: '#74b9ff', glyph: '📁' },
+      { id: 'browser', zh: '浏览器', en: 'Browser', cat: 'system', color: '#ff7675', glyph: '🌐' },
+      { id: 'discover', zh: '软件商店', en: 'Discover', cat: 'system', color: '#a29bfe', glyph: '🛒' },
+      { id: 'settings', zh: '设置', en: 'Settings', cat: 'system', color: '#b2bec3', glyph: '⚙' },
+      { id: 'terminal', zh: '终端', en: 'Terminal', cat: 'system', color: '#2d3436', glyph: '>_' },
+      { id: 'elisa', zh: '音乐', en: 'Elisa', cat: 'audio', color: '#fd79a8', glyph: '♪' },
+    ];
+
+    let current = 'all';
+
+    function toast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      clearTimeout(toast._tm);
+      toast._tm = setTimeout(() => t.classList.remove('show'), 2200);
+    }
+
+    function launch(app) {
+      toast(`以全屏应用打开 · ${app.zh}`);
+      // On a real device with custom scheme / local bridge this would call ust-launch
+      console.log('ust-launch', app.id);
+    }
+
+    function render() {
+      const grid = document.getElementById('grid');
+      grid.innerHTML = '';
+      APPS.filter(a => current === 'all' || a.cat === current).forEach(app => {
+        const btn = document.createElement('button');
+        btn.className = 'app';
+        btn.type = 'button';
+        btn.innerHTML = `
+          <div class="icon" style="background:linear-gradient(145deg, ${app.color}, #111)">${app.glyph}</div>
+          <span class="label">${app.zh}</span>
+        `;
+        btn.addEventListener('click', () => launch(app));
+        grid.appendChild(btn);
+      });
+    }
+
+    function filter(cat) {
+      current = cat;
+      document.querySelectorAll('.tab').forEach(t => {
+        t.classList.toggle('active', t.dataset.cat === cat);
+      });
+      render();
+    }
+
+    document.getElementById('tabs').addEventListener('click', (e) => {
+      const tab = e.target.closest('.tab');
+      if (!tab) return;
+      filter(tab.dataset.cat);
+    });
+
+    function tick() {
+      const d = new Date();
+      document.getElementById('clock').textContent =
+        d.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' });
+    }
+    tick();
+    setInterval(tick, 10000);
+    render();
+  </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+# Plasma Mobile — postmarketOS / Alpine
+# Prefer the meta UI package when present.
+
+postmarketos-ui-plasma-mobile
+plasma-mobile
+plasma-nano
+plasma-settings
+plasma-nm
+iio-sensor-proxy
+maliit-keyboard
+angelfish
+kalk
+kclock
+kweather
+qmlkonsole
+okular
+gwenview
+discover
+font-noto-cjk

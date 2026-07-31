@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+# Runs once per login: tablet-friendly defaults, OSK, IME, scale hints
+set -euo pipefail
+
+FLAG="${XDG_CONFIG_HOME:-$HOME/.config}/ubuntu-studio-tablet/.session-init-done"
+mkdir -p "$(dirname "$FLAG")"
+
+# Always: ensure IM env for this session
+export GTK_IM_MODULE=fcitx5
+export QT_IM_MODULE=fcitx5
+export XMODIFIERS=@im=fcitx5
+
+# Start fcitx5 if not running
+if command -v fcitx5 >/dev/null 2>&1; then
+  if ! pgrep -u "$USER" -x fcitx5 >/dev/null 2>&1; then
+    fcitx5 -d --replace >/dev/null 2>&1 || true
+  fi
+fi
+
+# Maliit / virtual keyboard on Wayland when available
+if command -v maliit-keyboard >/dev/null 2>&1; then
+  if ! pgrep -u "$USER" -f maliit-keyboard >/dev/null 2>&1; then
+    maliit-keyboard >/dev/null 2>&1 &
+  fi
+fi
+
+# Notify once about tablet mode
+if [[ ! -f "$FLAG" ]]; then
+  if command -v notify-send >/dev/null 2>&1; then
+    notify-send -a "Ubuntu Studio Tablet" \
+      "平板模式已就绪 / Tablet mode ready" \
+      "点击主屏幕图标以全屏应用方式打开创作工具。" \
+      -i preferences-desktop-display || true
+  fi
+  date -Iseconds >"$FLAG"
+fi
+
+# Soft-enforce borderless maximized (KWin may already load kwinrc)
+if command -v qdbus >/dev/null 2>&1; then
+  qdbus org.kde.KWin /KWin reconfigure >/dev/null 2>&1 || true
+elif command -v qdbus6 >/dev/null 2>&1; then
+  qdbus6 org.kde.KWin /KWin reconfigure >/dev/null 2>&1 || true
+fi

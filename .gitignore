@@ -1,0 +1,80 @@
+# --- ISO remaster / downloads ---
+iso/*.iso
+iso/*.iso.partial
+iso/*.img
+iso/*.img.xz
+iso/SHA256SUMS
+iso/SHA256SUMS.gpg
+iso/*.torrent
+iso/*.zsync
+iso/*.list
+iso/*.manifest
+iso/work/
+iso/**/edit/
+iso/**/extract/
+iso/**/mnt/
+
+# --- Local backups from install scripts ---
+*.pre-ust.bak
+**/*.pre-ust.bak
+
+# --- Editor / OS cruft ---
+*~
+*.swp
+*.swo
+.*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Editor / IDE ---
+.idea/
+.vscode/
+*.code-workspace
+*.sublime-project
+*.sublime-workspace
+
+# --- Logs & temp ---
+*.log
+/tmp/
+*.tmp
+*.temp
+.cache/
+
+# --- Python (if helpers added later) ---
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+.env
+.env.*
+
+# --- Secrets / local overrides (never commit) ---
+*.pem
+*.key
+id_rsa
+id_rsa.pub
+local.conf
+local.env
+.secrets/
+
+# --- Generated noise (optional local copies) ---
+# Keep apps/desktop/*.desktop in tree for convenience; ignore only if regenerated elsewhere:
+# apps/desktop/.generated
+
+# --- Package / build artifacts ---
+*.deb
+*.rpm
+*.apk
+*.tar
+*.tar.gz
+*.tar.xz
+*.zip
+!docs/**
+
+# --- pmbootstrap / device bring-up workdirs (if used beside this repo) ---
+.pmbootstrap/
+_pmbootstrap/
+chroot_native/
+chroot_rootfs_*/

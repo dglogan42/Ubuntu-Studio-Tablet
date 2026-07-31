@@ -1,0 +1,18 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Carla
+Name[zh_CN]=Carla 插件主机
+GenericName=Tablet App
+GenericName[zh_CN]=平板应用
+Comment=Ubuntu Studio Tablet fullscreen app
+Comment[zh_CN]=Ubuntu Studio 平板全屏应用
+Exec=/usr/lib/ubuntu-studio-tablet/bin/ust-launch --class carla2 -- carla
+Icon=carla
+Terminal=false
+StartupNotify=true
+StartupWMClass=carla2
+Categories=UbuntuStudioTablet;AudioVideo;Audio;
+Keywords=studio;tablet;touch;Carla;
+X-Ubuntu-Studio-Tablet=true
+X-KDE-FormFactor=tablet;handset;desktop;

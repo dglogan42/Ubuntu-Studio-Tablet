@@ -1,0 +1,14 @@
+[Theme]
+name=default
+
+[Wallpapers]
+usersWallpapers=
+
+[General]
+SystemFont=Noto Sans CJK SC
+desktopFont=Noto Sans CJK SC
+menuFont=Noto Sans CJK SC
+smallestReadableFont=Noto Sans CJK SC
+toolBarFont=Noto Sans CJK SC
+fixed=Noto Sans Mono CJK SC
+font=Noto Sans CJK SC,11,-1,5,50,0,0,0,0,0

@@ -1,0 +1,31 @@
+# Creative apps commonly available on Ubuntu arm64
+# Full Ubuntu Studio meta is amd64-centric; pick individual apps.
+
+# Graphics
+krita
+gimp
+inkscape
+# darktable   # sometimes delayed on arm64
+# blender     # heavy; install if available
+
+# Audio
+audacity
+lmms
+# ardour      # often available
+# carla
+# hydrogen
+qjackctl
+# qpwgraph
+
+# Video
+kdenlive
+# obs-studio  # optional / heavy
+shotcut
+
+# General
+libreoffice-writer
+firefox
+vlc
+pipewire
+pipewire-audio
+wireplumber

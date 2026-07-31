@@ -1,0 +1,73 @@
+# Ubuntu Studio Tablet — packages layered on Ubuntu Studio 26.04
+# Lines starting with # are comments. One package per line.
+
+# --- Tablet / touch shell ---
+plasma-workspace
+plasma-desktop
+plasma-nm
+plasma-pa
+plasma-discover
+kde-config-tablet
+maliit-keyboard
+maliit-framework
+qml-module-qtquick-virtualkeyboard
+qtvirtualkeyboard-plugin
+ibus-table
+# On-screen keyboard alternatives (install if available):
+# squeekboard
+
+# --- Chinese language & input ---
+language-pack-zh-hans
+language-pack-gnome-zh-hans
+language-pack-kde-zh-hans
+fonts-noto-cjk
+fonts-wqy-zenhei
+fonts-wqy-microhei
+fcitx5
+fcitx5-chinese-addons
+fcitx5-frontend-gtk3
+fcitx5-frontend-gtk4
+fcitx5-frontend-qt5
+fcitx5-frontend-qt6
+fcitx5-config-qt
+fcitx5-module-cloudpinyin
+kde-config-fcitx5
+
+# --- Touch / tablet utilities ---
+xserver-xorg-input-libinput
+libinput-tools
+iio-sensor-proxy
+brightnessctl
+wl-clipboard
+wtype
+ydotool
+
+# --- Fullscreen / window rules helpers ---
+wmctrl
+xdotool
+kwin-addons
+
+# --- Optional mobile-style apps (touch-friendly) ---
+angelfish
+kalk
+kclock
+kweather
+okular
+gwenview
+spectacle
+ark
+dolphin
+kate
+konsole
+elisa
+kasts
+
+# --- Network / stores ---
+plasma-discover-backend-flatpak
+flatpak
+network-manager
+
+# --- Power ---
+power-profiles-daemon
+tlp
+tlp-rdw

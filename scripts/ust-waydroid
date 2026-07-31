@@ -1,0 +1,81 @@
+#!/usr/bin/env bash
+# ust-waydroid — tablet-friendly Waydroid helpers
+set -euo pipefail
+
+cmd="${1:-ui}"
+shift || true
+
+need() {
+  command -v waydroid >/dev/null 2>&1 || {
+    echo "waydroid not installed. Run: sudo ./scripts/install-waydroid.sh" >&2
+    exit 1
+  }
+}
+
+ensure_session() {
+  # Start container if needed
+  if command -v systemctl >/dev/null 2>&1; then
+    systemctl is-active --quiet waydroid-container.service 2>/dev/null \
+      || systemctl start waydroid-container.service 2>/dev/null \
+      || true
+  fi
+  # User session
+  if ! waydroid status 2>/dev/null | grep -qi 'Session:.*RUNNING'; then
+    waydroid session start >/dev/null 2>&1 &
+    sleep 2
+  fi
+}
+
+case "$cmd" in
+  ui|show|full)
+    need
+    ensure_session
+    # Fullscreen-ish Android UI
+    export QT_QPA_PLATFORM="${QT_QPA_PLATFORM:-wayland;xcb}"
+    exec waydroid show-full-ui
+    ;;
+  app)
+    need
+    ensure_session
+    # ust-waydroid app <package>
+    pkg="${1:-}"
+    [[ -n "$pkg" ]] || { echo "Usage: ust-waydroid app <package.name>"; exit 2; }
+    exec waydroid app launch "$pkg"
+    ;;
+  list)
+    need
+    waydroid app list
+    ;;
+  install)
+    need
+    apk="${1:-}"
+    [[ -f "$apk" ]] || { echo "Usage: ust-waydroid install file.apk"; exit 2; }
+    exec waydroid app install "$apk"
+    ;;
+  shell)
+    need
+    exec waydroid shell
+    ;;
+  stop)
+    need
+    waydroid session stop 2>/dev/null || true
+    ;;
+  status)
+    need
+    waydroid status
+    ;;
+  *)
+    cat <<EOF
+Usage: ust-waydroid <command>
+
+  ui              Full Android UI (tablet-style)
+  app <package>   Launch one Android app
+  list            List installed Android apps
+  install <apk>   Install an APK
+  shell           Android shell
+  stop            Stop Waydroid session
+  status          Container/session status
+EOF
+    exit 2
+    ;;
+esac

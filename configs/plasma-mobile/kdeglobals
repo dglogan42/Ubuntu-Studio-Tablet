@@ -1,0 +1,19 @@
+[General]
+ColorScheme=BreezeDark
+Name=Ubuntu Studio Tablet Mobile
+fixed=Noto Sans Mono CJK SC,10,-1,5,50,0,0,0,0,0
+font=Noto Sans CJK SC,11,-1,5,50,0,0,0,0,0
+menuFont=Noto Sans CJK SC,11,-1,5,50,0,0,0,0,0
+smallestReadableFont=Noto Sans CJK SC,9,-1,5,50,0,0,0,0,0
+toolBarFont=Noto Sans CJK SC,10,-1,5,50,0,0,0,0,0
+
+[KDE]
+LookAndFeelPackage=org.kde.breeze.phone
+SingleClick=true
+AnimationDurationFactor=0.7
+
+[Icons]
+Theme=breeze-dark
+
+[Toolbar style]
+ToolButtonStyle=TextUnderIcon

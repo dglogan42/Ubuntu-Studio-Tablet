@@ -1,0 +1,11 @@
+# codename	marketing_names	soc	arch	pmos_status	notes	wiki_slug
+lenovo-j716f	Xiaoxin Pad Pro 2021;Tab P12 Pro (related)	Snapdragon 870	aarch64	testing_unmerged	Tested with postmarketOS; device package may not be in official repos yet	Lenovo_Xiaoxin_Pad_Pro_2021_(lenovo-j716f)
+lenovo-q706f	Xiaoxin Pad Pro 12.6;Tab P12 Pro	Snapdragon 870	aarch64	archived	Wiki page archived; downstream kernel sources released by Lenovo; expect breakage	Lenovo_Xiaoxin_Pad_Pro_12.6_(lenovo-q706f)
+lenovo-tb128fu	Xiaoxin Pad 2022	Snapdragon 680 (typical)	aarch64	archived	Archived in pmbootstrap; likely broken	Lenovo_Xiaoxin_Pad_2022_(lenovo-tb128fu)
+lenovo-tbx505x	Tab M10 HD	Snapdragon 429	aarch64	testing	Not Xiaoxin Pro; example of Lenovo tablet with pmOS testing entry	Lenovo_Tab_M10_HD_(lenovo-tbx505x)
+google-kodama	Lenovo 10e Chromebook Tablet	MediaTek	aarch64	community	Chromebook-class support; different unlock/flash model	Lenovo_10e_Chromebook_Tablet_(google-kodama)
+generic-sd870	Any Snapdragon 870 tablet without port	Snapdragon 870	aarch64	unsupported	Same SoC as j716f/q706f — port may be portable with work	-
+generic-dimensity-8300	Xiaoxin Pad Pro 12.7 2025 (typical)	Dimensity 8300	aarch64	unsupported	No known postmarketOS port as of 2026 research; prefer Android+remote or proot	-
+generic-sd8gen3	Xiaoxin Pad Pro GT (typical)	Snapdragon 8 Gen 3	aarch64	unsupported	No known pmOS port; mainline mobile GPU/display unfinished for daily use	-
+pine64-pinetab2	PineTab 2	RK3566	aarch64	community_mainline	Buy-for-Linux option if Xiaoxin will not port	PINE64_PineTab2
+pine64-pinephonepro	PinePhone Pro	RK3399S	aarch64	community	Phone, not tablet; good Plasma Mobile testbed	PINE64_PinePhone_Pro

@@ -1,0 +1,9 @@
+# Plasma Desktop (tablet mode) on postmarketOS/Alpine — less common on phones
+plasma-desktop
+plasma-workspace
+plasma-nm
+plasma-pa
+kwin
+maliit-keyboard
+iio-sensor-proxy
+font-noto-cjk

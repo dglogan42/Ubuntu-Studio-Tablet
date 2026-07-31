@@ -1,0 +1,18 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Inkscape
+Name[zh_CN]=Inkscape 矢量
+GenericName=Tablet App
+GenericName[zh_CN]=平板应用
+Comment=Ubuntu Studio Tablet fullscreen app
+Comment[zh_CN]=Ubuntu Studio 平板全屏应用
+Exec=/usr/lib/ubuntu-studio-tablet/bin/ust-launch --class org.inkscape.Inkscape -- inkscape
+Icon=org.inkscape.Inkscape
+Terminal=false
+StartupNotify=true
+StartupWMClass=org.inkscape.Inkscape
+Categories=UbuntuStudioTablet;Graphics;VectorGraphics;
+Keywords=studio;tablet;touch;Inkscape;
+X-Ubuntu-Studio-Tablet=true
+X-KDE-FormFactor=tablet;handset;desktop;

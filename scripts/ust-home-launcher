@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Open full-screen app dashboard (Android-style home)
+set -euo pipefail
+
+# Prefer Plasma Application Dashboard (kickerdash)
+if command -v qdbus6 >/dev/null 2>&1; then
+  qdbus6 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "Show Desktop" 2>/dev/null || true
+fi
+
+# Application Dashboard global shortcut is often Meta+A or configured as kickerdash
+if command -v kstart >/dev/null 2>&1; then
+  kstart --appimage-exec true 2>/dev/null || true
+fi
+
+# Fallback: plasma-windowed dashboard or krunner full
+if command -v plasmawindowed >/dev/null 2>&1; then
+  exec plasmawindowed org.kde.plasma.kickerdash
+fi
+
+if command -v krunner >/dev/null 2>&1; then
+  exec krunner
+fi
+
+echo "No dashboard available" >&2
+exit 1
