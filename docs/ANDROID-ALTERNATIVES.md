@@ -115,6 +115,9 @@ Libre mobile OS (**Lomiri**), originally Canonical, now **UBports** volunteers. 
 
 Commercial example: **Volla Phone** · Community example: **Fairphone 5** (see live devices page).
 
+**Tablet pick with Installer + Fully Optimized support:**  
+**[Lenovo Tab M10 HD 2nd Gen Wi‑Fi (X306F)](https://devices.ubuntu-touch.io/device/amar-row-wifi/)** — Halium 11.0, codename **`amar_row_wifi`**, ~$140, focal + noble, Waydroid/Wi‑Fi/cameras reported working. Requires **Android 11 stock** before flash. Full notes: [UBUNTU-TOUCH.md § M10 HD](UBUNTU-TOUCH.md#featured-tablet-lenovo-tab-m10-hd-2nd-gen-wi-fi).
+
 Installer flashes **recovery + kernel + system** over USB. Mature ports use the installer; early ports may need painful manual steps.
 
 **Not** Ubuntu Studio. After Touch boots, this repo’s Plasma scripts do **not** apply directly — see [UBUNTU-TOUCH.md](UBUNTU-TOUCH.md).

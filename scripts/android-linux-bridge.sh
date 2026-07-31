@@ -82,6 +82,11 @@ Ubuntu Touch (UBports Installer pulls recovery + kernel + system over USB):
   Before install: read FAQ; dual-boot NOT supported; avoid manual flash;
     prefer recently updated devices; VoLTE issues may apply (e.g. N. America).
   Preinstalled: Volla, Pine64, FXP commercial options on devices site.
+  Budget tablet (Fully Optimized + Installer):
+    Lenovo Tab M10 HD 2nd Gen Wi-Fi (X306F) — amar_row_wifi ~$140
+    https://devices.ubuntu-touch.io/device/amar-row-wifi/
+    https://devices.ubuntu-touch.io/device/amar-row-wifi/release/noble/
+    Need Android 11 stock first; dual-boot NOT supported; Halium 11.0.
   Not the same as Ubuntu Studio desktop.
 
 postmarketOS (prebuilt images or pmbootstrap → flash_kernel + flash_rootfs):

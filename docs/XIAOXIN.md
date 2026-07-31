@@ -6,6 +6,7 @@
 |---------|------------------|-----------------|--------------|
 | **Xiaoxin Pro laptop** (notebook / 2-in-1) | Intel/AMD **x86_64** | **Yes** — standard USB install | **Primary path** |
 | **Xiaoxin Pad Pro** (Android tablet) | Snapdragon / Dimensity **ARM64** | Not with amd64 ISO | [ARM-PORT.md](ARM-PORT.md) |
+| **Lenovo Tab M10 HD 2nd Gen (X306F)** | MediaTek **ARM64** | **Yes — Ubuntu Touch** (not Studio ISO) | [UBUNTU-TOUCH.md](UBUNTU-TOUCH.md#featured-tablet-lenovo-tab-m10-hd-2nd-gen-wi-fi) · [UBports device page](https://devices.ubuntu-touch.io/device/amar-row-wifi/) |
 
 ### Xiaoxin Pro **laptop** — start here
 

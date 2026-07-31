@@ -56,6 +56,62 @@ Porters with a reputation for long-term commitment (examples called out upstream
 
 - **Fairphone 5** (and other “Community Devices” on the devices page)
 
+### Featured tablet: Lenovo Tab M10 HD 2nd Gen (Wi‑Fi)
+
+Affordable **10.1″** Lenovo tablet with a **mature Ubuntu Touch** community port — useful if you want a real Linux tablet *without* relying on Xiaoxin Pad / postmarketOS.
+
+| | |
+|--|--|
+| **Marketing name** | Lenovo Tab M10 HD 2nd Gen Wi‑Fi 4G/64GB (confirm exact SKU) |
+| **Confirm model** | **X306F** (Wi‑Fi). Do not flash a mismatched variant. |
+| **UBports codename** | `amar_row_wifi` |
+| **Device page** | [devices.ubuntu-touch.io/device/amar-row-wifi](https://devices.ubuntu-touch.io/device/amar-row-wifi/) |
+| **24.04 (noble)** | […/release/noble](https://devices.ubuntu-touch.io/device/amar-row-wifi/release/noble/) |
+| **20.04 (focal)** | […/device/amar-row-wifi](https://devices.ubuntu-touch.io/device/amar-row-wifi/) (focal channel) |
+| **Stack** | **Halium 11.0** |
+| **Install path** | **[UBports Installer](https://devices.ubuntu-touch.io/installer/)** (recommended) |
+| **Ballpark price** | ~ **$140** (street price varies) |
+| **Support state** | **Fully Optimized** — full community support; actively updated |
+| **Usability (upstream beta)** | Runs very smoothly; experience comparable to other mobile OSes |
+
+#### Hardware (typical stock specs)
+
+- 10.1″ HD, premium metallic design  
+- MediaTek **8-core ~2.3 GHz**, **2/4 GB** RAM, **32/64 GB** storage, microSD up to **1 TB**  
+- **5000 mAh** battery  
+
+#### Before flashing (device-specific)
+
+1. Confirm the tablet is a **Lenovo Tab M10 HD Wi‑Fi (X306F)**.  
+2. Device must be running **Android 11 stock firmware** before installing Ubuntu Touch (per device page).  
+3. **Dual boot is not supported** — expect a full switch from Android.  
+4. Use the **Installer**; avoid manual flash unless you are porting.  
+5. LTE twin (if you have cellular): see [amar-row-lte](https://devices.ubuntu-touch.io/device/amar-row-lte/) — **different** codename; do not cross-flash.
+
+#### Features reported working (community / Fully Optimized)
+
+Upstream marks this port with broad green features across **20.04 focal** and **24.04 noble**. Highlights from the public matrix:
+
+| Area | Working (reported) |
+|------|---------------------|
+| **Actors** | Manual brightness, vibration |
+| **Camera** | Photo, video, camera switch |
+| **Endurance** | 24+ h battery life claims, 7+ days stability |
+| **GPU** | Boot to UI, hardware video playback |
+| **Misc** | AppArmor patches, battery %, offline/online charging, recovery image, factory reset, SD card, RTC, shutdown/reboot, wireless external monitor, **Waydroid** |
+| **Network** | Bluetooth, flight mode, Wi‑Fi, FM radio |
+| **Sensors** | Auto brightness, GPS, proximity, rotation, touchscreen, double-tap to wake |
+| **Sound** | Earphones, loudspeaker, mic, volume |
+| **USB** | MTP, ADB |
+
+Always re-check the live device page — matrices change when ports regress or improve.
+
+#### After install vs this repo
+
+You get **Ubuntu Touch (Lomiri)** + optional **Waydroid** for Android apps — not KDE Plasma / Ubuntu Studio Tablet session scripts. For Studio-class creative work, still prefer **amd64 Ubuntu Studio** or remote into it.
+
+Matrix row: `lenovo-amar-row-wifi` in `data/device-matrix.tsv`.
+
 ### What about my device?
 
 If it does **not** appear on the devices list **even with filters cleared**, it is **not supported**.

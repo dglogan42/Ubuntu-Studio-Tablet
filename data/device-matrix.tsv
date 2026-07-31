@@ -2,7 +2,9 @@
 lenovo-j716f	Xiaoxin Pad Pro 2021;Tab P12 Pro (related)	Snapdragon 870	aarch64	testing_unmerged	Tested with postmarketOS; device package may not be in official repos yet	Lenovo_Xiaoxin_Pad_Pro_2021_(lenovo-j716f)
 lenovo-q706f	Xiaoxin Pad Pro 12.6;Tab P12 Pro	Snapdragon 870	aarch64	archived	Wiki page archived; downstream kernel sources released by Lenovo; expect breakage	Lenovo_Xiaoxin_Pad_Pro_12.6_(lenovo-q706f)
 lenovo-tb128fu	Xiaoxin Pad 2022	Snapdragon 680 (typical)	aarch64	archived	Archived in pmbootstrap; likely broken	Lenovo_Xiaoxin_Pad_2022_(lenovo-tb128fu)
-lenovo-tbx505x	Tab M10 HD	Snapdragon 429	aarch64	testing	Not Xiaoxin Pro; example of Lenovo tablet with pmOS testing entry	Lenovo_Tab_M10_HD_(lenovo-tbx505x)
+lenovo-tbx505x	Tab M10 HD (older / pmOS)	Snapdragon 429	aarch64	testing	Older M10 HD line in postmarketOS testing — not the Ubuntu Touch X306F port	Lenovo_Tab_M10_HD_(lenovo-tbx505x)
+lenovo-amar-row-wifi	Lenovo Tab M10 HD 2nd Gen WiFi (X306F); 4G/64GB market names	MediaTek Helio P22T (MT6762/6765 class)	aarch64	ubuntu_touch	Ubuntu Touch Halium 11.0 codename amar_row_wifi; UBports Installer; focal+noble; Fully Optimized; ~$140. Must be X306F + Android 11 stock before flash. Not Xiaoxin Pad.	https://devices.ubuntu-touch.io/device/amar-row-wifi/
+lenovo-amar-row-lte	Lenovo Tab M10 HD 2nd Gen LTE (X306X class)	MediaTek Helio P22T class	aarch64	ubuntu_touch	Ubuntu Touch LTE sibling amar-row-lte — confirm exact model on devices site before flashing	https://devices.ubuntu-touch.io/device/amar-row-lte/
 google-kodama	Lenovo 10e Chromebook Tablet	MediaTek	aarch64	community	Chromebook-class support; different unlock/flash model	Lenovo_10e_Chromebook_Tablet_(google-kodama)
 generic-sd870	Any Snapdragon 870 tablet without port	Snapdragon 870	aarch64	unsupported	Same SoC as j716f/q706f — port may be portable with work	-
 generic-dimensity-8300	Xiaoxin Pad Pro 12.7 2025 (typical)	Dimensity 8300	aarch64	unsupported	No known postmarketOS port as of 2026 research; prefer Android+remote or proot	-
