@@ -73,6 +73,8 @@ if [[ "$FROM_ADB" -eq 1 ]]; then
       j716f|tb-j716f|tb_j716f) CODENAME=lenovo-j716f ;;
       q706f|tb-q706f) CODENAME=lenovo-q706f ;;
       tb128fu|tb-128fu) CODENAME=lenovo-tb128fu ;;
+      x306f|tb-x306f|tb_x306f|amar_row_wifi|amar-row-wifi) CODENAME=lenovo-amar-row-wifi ;;
+      x306x|tb-x306x|tb_x306x|amar_row_lte|amar-row-lte) CODENAME=lenovo-amar-row-lte ;;
       *)
         if [[ "$low" == lenovo-* ]]; then
           CODENAME="$low"
@@ -163,14 +165,32 @@ echo "codename     : $codename"
 echo "names        : $names"
 echo "SoC          : $soc"
 echo "arch         : $arch"
-echo "pmOS status  : $STATUS"
+echo "port status  : $STATUS"
 echo "notes        : $notes"
 if [[ -n "$wiki" && "$wiki" != "-" ]]; then
-  echo "wiki         : https://wiki.postmarketos.org/wiki/$wiki"
+  if [[ "$wiki" == https://* || "$wiki" == http://* ]]; then
+    echo "device page  : $wiki"
+  else
+    echo "wiki         : https://wiki.postmarketos.org/wiki/$wiki"
+  fi
 fi
 echo ""
 
 case "$STATUS" in
+  ubuntu_touch)
+    echo "Result: UBUNTU TOUCH path (Halium / UBports — not Plasma Studio layer)"
+    echo ""
+    echo "Recommended:"
+    echo "  1. Confirm exact model on the device page above"
+    echo "  2. Stock firmware requirements (often Android 11) — read device page"
+    echo "  3. Install via UBports Installer:"
+    echo "       https://devices.ubuntu-touch.io/installer/"
+    echo "  4. Dual-boot is NOT supported"
+    echo ""
+    echo "Guide: docs/UBUNTU-TOUCH.md"
+    echo "Note: install-arm.sh targets Plasma Mobile, not Lomiri/Ubuntu Touch."
+    exit 0
+    ;;
   community|community_mainline|testing|testing_unmerged)
     echo "Result: POSSIBLE native ARM Linux path"
     echo ""
@@ -196,6 +216,7 @@ case "$STATUS" in
     echo "Recommended fallbacks:"
     echo "  ./scripts/android-linux-bridge.sh --print-all"
     echo "  docs/ARM-PORT.md  (Path C remote/proot, Path D other hardware)"
+    echo "  docs/UBUNTU-TOUCH.md  (if listed on devices.ubuntu-touch.io)"
     echo ""
     echo "install-arm.sh will not help until Linux boots natively."
     exit 3
