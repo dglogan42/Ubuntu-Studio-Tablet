@@ -58,6 +58,8 @@ Porters with a reputation for long-term commitment (examples called out upstream
 
 ### Featured tablet: Lenovo Tab M10 HD 2nd Gen (Wi‑Fi)
 
+**Step-by-step install guide:** **[M10-HD-UBUNTU-TOUCH.md](M10-HD-UBUNTU-TOUCH.md)** (`snap run ubports-installer`, X306F checks, after-boot notes).
+
 Affordable **10.1″** Lenovo tablet with a **mature Ubuntu Touch** community port — useful if you want a real Linux tablet *without* relying on Xiaoxin Pad / postmarketOS.
 
 | | |

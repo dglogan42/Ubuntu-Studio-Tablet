@@ -41,8 +41,18 @@ This repo **does not** unlock bootloaders or ship device kernels.
 | If you want… | Use |
 |--------------|-----|
 | Full Studio apps + tablet UX | AMD64 PC/laptop + this layer (or remote into it from the pad) |
-| Replace Android entirely | **Ubuntu Touch** or **postmarketOS** *only on supported devices*, then optionally `install-arm.sh` |
+| **Lenovo Tab M10 HD (X306F)** | **Ubuntu Touch** via UBports Installer + **Halium 11** device kernel — **[docs/M10-HD-UBUNTU-TOUCH.md](docs/M10-HD-UBUNTU-TOUCH.md)** |
+| Other supported UT phones/tablets | [devices.ubuntu-touch.io](https://devices.ubuntu-touch.io/) · [docs/UBUNTU-TOUCH.md](docs/UBUNTU-TOUCH.md) |
+| Replace Android (generic ARM) | **postmarketOS** *if ported*, then optionally `install-arm.sh` |
 | Linux *without* wiping Android | **Andronix** (XFCE/LXQt on Termux) or **Termux** CLI / proot |
+| **Xiaoxin Pad** | No Studio ISO; usually no UT — remote Studio or rare ARM port ([XIAOXIN.md](docs/XIAOXIN.md)) |
+
+**M10 HD one-liner (on a Linux PC):**
+
+```bash
+sudo snap install ubports-installer   # once
+snap run ubports-installer            # flash amar_row_wifi / X306F only
+```
 
 Full write-up + **ISO / image / installer download links**: **[docs/ANDROID-ALTERNATIVES.md](docs/ANDROID-ALTERNATIVES.md)**  
 Bridge cheat sheet (includes flash URLs): `./scripts/android-linux-bridge.sh --print-mobile-os`
@@ -103,6 +113,7 @@ xdg-open apps/home-grid.html
 | [docs/INSTALL.md](docs/INSTALL.md) | Install options |
 | [docs/ANDROID-ALTERNATIVES.md](docs/ANDROID-ALTERNATIVES.md) | **Why Studio ≠ Android pad** — Ubuntu Touch, pmOS, Andronix, Termux |
 | [docs/UBUNTU-TOUCH.md](docs/UBUNTU-TOUCH.md) | Ubuntu Touch **before install** (UBports checklist, devices, installer) |
+| [docs/M10-HD-UBUNTU-TOUCH.md](docs/M10-HD-UBUNTU-TOUCH.md) | **Tab M10 HD (X306F)** → UT Installer + Halium quick start |
 | [docs/XIAOXIN-LAPTOP.md](docs/XIAOXIN-LAPTOP.md) | Xiaoxin Pro laptop: USB, BIOS, **dual-boot Windows** |
 | [docs/XIAOXIN.md](docs/XIAOXIN.md) | Laptop vs Pad overview |
 | [docs/ARM-PORT.md](docs/ARM-PORT.md) | Get ARM Linux booting first |

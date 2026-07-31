@@ -87,6 +87,8 @@ Ubuntu Touch (UBports Installer pulls recovery + kernel + system over USB):
     https://devices.ubuntu-touch.io/device/amar-row-wifi/
     https://devices.ubuntu-touch.io/device/amar-row-wifi/release/noble/
     Need Android 11 stock first; dual-boot NOT supported; Halium 11.0.
+    PC:  sudo snap install ubports-installer && snap run ubports-installer
+    Repo: docs/M10-HD-UBUNTU-TOUCH.md
   Not the same as Ubuntu Studio desktop.
 
 postmarketOS (prebuilt images or pmbootstrap → flash_kernel + flash_rootfs):
