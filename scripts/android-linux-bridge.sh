@@ -75,7 +75,13 @@ Ubuntu Touch (UBports Installer pulls recovery + kernel + system over USB):
   macOS:       https://devices.ubuntu-touch.io/installer?package=dmg
   Snap:        snap install ubports-installer
   Apps:        https://www.ubuntu-touch.io/apps
+  FAQ:         https://ubports.com/community/faq
   Docs:        https://docs.ubports.com/en/latest/userguide/install.html
+  Lomiri PC:   https://lomiri.com/
+  Repo guide:  docs/UBUNTU-TOUCH.md
+  Before install: read FAQ; dual-boot NOT supported; avoid manual flash;
+    prefer recently updated devices; VoLTE issues may apply (e.g. N. America).
+  Preinstalled: Volla, Pine64, FXP commercial options on devices site.
   Not the same as Ubuntu Studio desktop.
 
 postmarketOS (prebuilt images or pmbootstrap → flash_kernel + flash_rootfs):

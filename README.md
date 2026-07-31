@@ -102,6 +102,7 @@ xdg-open apps/home-grid.html
 |-----|--------|
 | [docs/INSTALL.md](docs/INSTALL.md) | Install options |
 | [docs/ANDROID-ALTERNATIVES.md](docs/ANDROID-ALTERNATIVES.md) | **Why Studio ≠ Android pad** — Ubuntu Touch, pmOS, Andronix, Termux |
+| [docs/UBUNTU-TOUCH.md](docs/UBUNTU-TOUCH.md) | Ubuntu Touch **before install** (UBports checklist, devices, installer) |
 | [docs/XIAOXIN-LAPTOP.md](docs/XIAOXIN-LAPTOP.md) | Xiaoxin Pro laptop: USB, BIOS, **dual-boot Windows** |
 | [docs/XIAOXIN.md](docs/XIAOXIN.md) | Laptop vs Pad overview |
 | [docs/ARM-PORT.md](docs/ARM-PORT.md) | Get ARM Linux booting first |

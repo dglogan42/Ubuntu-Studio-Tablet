@@ -78,14 +78,46 @@ Repo helper (prints matrix hints only — does **not** flash):
 
 ### Ubuntu Touch
 
-A mobile-friendly Ubuntu-derived system for **phones and tablets** that **replaces Android entirely** on **supported** hardware.
+Official site: **[https://www.ubuntu-touch.io/](https://www.ubuntu-touch.io/)**  
+Libre mobile OS (**Lomiri**), originally Canonical, now **UBports** volunteers. Replaces Android on **supported** devices only. Full pre-install guide in this repo: **[UBUNTU-TOUCH.md](UBUNTU-TOUCH.md)**.
 
-- Project: [ubuntu-touch.io](https://ubuntu-touch.io/) · docs: [docs.ubports.com install guide](https://docs.ubports.com/en/latest/userguide/install.html)  
-- **Not** the same as Ubuntu Studio desktop  
-- Install path: unlock/bootloader prep per [device page](https://devices.ubuntu-touch.io/) → run **UBports Installer** on a PC → installer downloads and flashes **recovery, kernel, and system** images over USB  
-- Manual/advanced: some ports publish partition images (boot/system) on their GitLab CI; prefer the installer unless the device page says otherwise  
+| Step | Link |
+|------|------|
+| Homepage | [www.ubuntu-touch.io](https://www.ubuntu-touch.io/) |
+| **Get Ubuntu Touch** / devices | [devices.ubuntu-touch.io](https://devices.ubuntu-touch.io/) |
+| Installer | [devices.ubuntu-touch.io/installer](https://devices.ubuntu-touch.io/installer/) |
+| Apps | [ubuntu-touch.io/apps](https://www.ubuntu-touch.io/apps) |
+| FAQ (read first) | [ubports.com FAQ](https://ubports.com/community/faq) |
+| Install docs | [docs.ubports.com](https://docs.ubports.com/en/latest/userguide/install.html) |
+| Lomiri on PC | [lomiri.com](https://lomiri.com/) |
+| Source | [gitlab.com/ubports](https://gitlab.com/ubports/) |
 
-After a working session, creative apps are limited compared with amd64 Studio; treat UST scripts as optional experiments, not a guarantee.
+#### Before installation (UBports)
+
+- Mostly stable, **still missing features** — read the FAQ first.  
+- Stick to guidelines; prefer **recently updated** devices.  
+- Confirm the phone/tablet is **fully functional** before flashing.  
+- **VoLTE / calls** may be problematic (noted for **North America** on some devices).  
+- **Dual booting is not supported.**  
+- Prefer the **UBports Installer**; **avoid manual install** unless you know what you are doing.  
+- **Not on the device list (any filter)?** → unsupported; porting requires you / community (docs on GitLab).  
+- Risk is yours (best-effort volunteer software).
+
+#### Ways to get it
+
+| Option | Notes |
+|--------|--------|
+| **Preinstalled** | Volla, Pine64, FXP and other commercial offerings |
+| **Installer** | Switch from Android on [listed devices](https://devices.ubuntu-touch.io/) |
+| **Native image** | PinePhone / PineTab: image on device, boots directly |
+| **Manual** | Discouraged; for unfinished ports only |
+| **Virtual / Lomiri desktop** | Dev kit or Lomiri on PC if you lack hardware |
+
+Commercial example: **Volla Phone** · Community example: **Fairphone 5** (see live devices page).
+
+Installer flashes **recovery + kernel + system** over USB. Mature ports use the installer; early ports may need painful manual steps.
+
+**Not** Ubuntu Studio. After Touch boots, this repo’s Plasma scripts do **not** apply directly — see [UBUNTU-TOUCH.md](UBUNTU-TOUCH.md).
 
 ### postmarketOS
 
