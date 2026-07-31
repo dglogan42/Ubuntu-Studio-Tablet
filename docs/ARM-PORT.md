@@ -88,9 +88,11 @@ Pick a UI tarball that includes **plasma-mobile** when available, then flash **r
 
 | Resource | URL |
 |----------|-----|
-| Device support | https://devices.ubuntu-touch.io/ |
+| Official homepage | https://www.ubuntu-touch.io/ |
+| Get Ubuntu Touch / devices | https://devices.ubuntu-touch.io/ |
 | Installer (downloads recovery/kernel/system) | https://devices.ubuntu-touch.io/installer/ |
 | Installer releases | https://github.com/ubports/ubports-installer/releases/latest |
+| Apps | https://www.ubuntu-touch.io/apps |
 | Install docs | https://docs.ubports.com/en/latest/userguide/install.html |
 
 Full comparison + Studio ISO links: **[ANDROID-ALTERNATIVES.md](ANDROID-ALTERNATIVES.md)**.

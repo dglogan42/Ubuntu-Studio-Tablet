@@ -65,7 +65,8 @@ mobile_os() {
 Sideload = unlock bootloader + flash Linux kernel/rootfs (not Studio.iso on userdata).
 
 Ubuntu Touch (UBports Installer pulls recovery + kernel + system over USB):
-  Devices:     https://devices.ubuntu-touch.io/
+  Homepage:    https://www.ubuntu-touch.io/
+  Get / devices: https://devices.ubuntu-touch.io/
   Installer:   https://devices.ubuntu-touch.io/installer/
   Releases:    https://github.com/ubports/ubports-installer/releases/latest
   AppImage:    https://devices.ubuntu-touch.io/installer?package=appimage
@@ -73,6 +74,7 @@ Ubuntu Touch (UBports Installer pulls recovery + kernel + system over USB):
   Windows:     https://devices.ubuntu-touch.io/installer?package=exe
   macOS:       https://devices.ubuntu-touch.io/installer?package=dmg
   Snap:        snap install ubports-installer
+  Apps:        https://www.ubuntu-touch.io/apps
   Docs:        https://docs.ubports.com/en/latest/userguide/install.html
   Not the same as Ubuntu Studio desktop.
 
