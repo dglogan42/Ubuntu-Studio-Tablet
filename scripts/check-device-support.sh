@@ -188,6 +188,10 @@ case "$STATUS" in
     echo "  4. Dual-boot is NOT supported"
     echo ""
     echo "Guide: docs/UBUNTU-TOUCH.md"
+    if [[ "$codename" == *amar-row* || "$codename" == *amar_row* ]]; then
+      echo "M10 HD quick start: docs/M10-HD-UBUNTU-TOUCH.md"
+      echo "  snap run ubports-installer   # amar_row_wifi / X306F only"
+    fi
     echo "Note: install-arm.sh targets Plasma Mobile, not Lomiri/Ubuntu Touch."
     exit 0
     ;;
